@@ -35,7 +35,7 @@ class MemoRepository private constructor(context: Context) {
         return dao.selectAll()
     }
 
-    suspend fun select(id: Int): MutableList<MemoDto> {
+    suspend fun select(id: Int): MemoDto {
         return dao.select(id)
     }
 

@@ -15,7 +15,7 @@ interface MemoDao {
 
     // id로 메모 조회
     @Query("SELECT * FROM $TABLE WHERE id = (:id)")
-    suspend fun select(id: Int): MutableList<MemoDto>
+    suspend fun select(id: Int): MemoDto
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(memo: MemoDto)
