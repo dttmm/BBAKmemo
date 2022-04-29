@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BBAKmemo">
         <activity
+            android:name=".memo.MemoEditActivity"
+            android:exported="false" />
+        <activity
             android:name=".memo.MemoActivity"
             android:exported="false" />
         <activity
