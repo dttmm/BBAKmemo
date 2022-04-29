@@ -1,8 +1,10 @@
 package com.dttmm.bbakmemo.memo
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -35,6 +37,12 @@ class MemoActivity : AppCompatActivity() {
         }
 
         initAdapter()
+
+        binding.fabRegister.setOnClickListener {
+            Intent(this@MemoActivity, MemoEditActivity::class.java).apply {
+                startActivity(this)
+            }
+        }
     }
 
 
@@ -45,5 +53,13 @@ class MemoActivity : AppCompatActivity() {
             it.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         }
         adapter.data = viewModel.data.value ?: mutableListOf()
+        adapter.setOnItemClickListener = object : MemoAdapter.SetOnItemClickListener {
+            override fun onClick(view: View, position: Int) {
+                Intent(this@MemoActivity, MemoEditActivity::class.java).apply {
+                    putExtra("id", adapter.data[position].id)
+                    startActivity(this)
+                }
+            }
+        }
     }
 }
