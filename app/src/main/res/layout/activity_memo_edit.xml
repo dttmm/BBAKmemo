@@ -33,7 +33,7 @@
                 android:layout_weight="1"
                 android:gravity="top"
                 android:hint="메모를 입력하세요"
-                android:text="@{memo.content}" />
+                android:text="@={memo.content}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:hint="비밀번호를 설정하려면 입력하세요"
                 android:inputType="numberPassword"
-                android:text="@{memo.password}" />
+                android:text="@={memo.password}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
