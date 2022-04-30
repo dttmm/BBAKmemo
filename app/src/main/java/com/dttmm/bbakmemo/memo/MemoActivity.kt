@@ -1,11 +1,15 @@
 package com.dttmm.bbakmemo.memo
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -55,9 +59,40 @@ class MemoActivity : AppCompatActivity() {
         adapter.data = viewModel.data.value ?: mutableListOf()
         adapter.setOnItemClickListener = object : MemoAdapter.SetOnItemClickListener {
             override fun onClick(view: View, position: Int) {
-                Intent(this@MemoActivity, MemoEditActivity::class.java).apply {
-                    putExtra("id", adapter.data[position].id)
-                    startActivity(this)
+                val data = adapter.data[position]
+
+                if (!data.password.isEmpty()) {  // 비밀메모인 경우
+                    val builder = AlertDialog.Builder(this@MemoActivity)
+                    builder.setTitle("비밀번호를 입력하세요")
+                    builder.setIcon(R.drawable.ic_baseline_lock_24)
+
+                    val view = layoutInflater.inflate(R.layout.dialog_password, null)
+                    builder.setView(view)
+
+                    val listener = DialogInterface.OnClickListener { dialog, i ->
+                        val alert = dialog as AlertDialog
+                        val et = alert.findViewById<EditText>(R.id.et_password_dialog)
+
+                        if (et?.text.toString().equals(data.password)) {
+                            Intent(this@MemoActivity, MemoEditActivity::class.java).apply {
+                                putExtra("id", data.id)
+                                startActivity(this)
+                            }
+                        } else {
+                            Toast.makeText(this@MemoActivity, "비밀번호가 틀렸습니다", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
+
+                    builder.setPositiveButton("확인", listener)
+                    builder.setNegativeButton("취소", null)
+                    builder.show()
+
+                } else {
+                    Intent(this@MemoActivity, MemoEditActivity::class.java).apply {
+                        putExtra("id", data.id)
+                        startActivity(this)
+                    }
                 }
             }
         }
