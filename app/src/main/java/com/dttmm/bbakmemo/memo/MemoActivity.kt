@@ -5,11 +5,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -37,6 +40,7 @@ class MemoActivity : AppCompatActivity() {
 
         viewModel.data.observe(this) {
             adapter.data = it
+            adapter.searchData = it
             adapter.notifyDataSetChanged()
         }
 
@@ -47,16 +51,19 @@ class MemoActivity : AppCompatActivity() {
                 startActivity(this)
             }
         }
+
+        binding.toolbar.setTitle(R.string.app_name)
+        setSupportActionBar(binding.toolbar)
     }
 
 
     private fun initAdapter() {
-        adapter = MemoAdapter()
+        adapter = MemoAdapter(viewModel.data.value ?: mutableListOf())
         binding.recyclerview.also {
             it.adapter = adapter
             it.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         }
-        adapter.data = viewModel.data.value ?: mutableListOf()
+
         adapter.setOnItemClickListener = object : MemoAdapter.SetOnItemClickListener {
             override fun onClick(view: View, position: Int) {
                 val data = adapter.data[position]
@@ -96,5 +103,24 @@ class MemoActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_toolbar, menu)
+        val searchItem = menu!!.findItem(R.id.search)
+        val searchView = searchItem.actionView as SearchView
+
+        // menuItem 에서 searchView 가져온다음 리스너 달면 됨
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter.filter(newText)
+                return false
+            }
+        })
+        return true
     }
 }
