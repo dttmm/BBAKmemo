@@ -30,8 +30,11 @@ class MemoDto() : BaseObservable() {
         this.content = content
     }
 
-    constructor(id: Int, content: String, password: String) : this(content) {
-        this.id = id
+    constructor(content: String, password: String) : this(content) {
         this.password = password
+    }
+
+    constructor(id: Int, content: String, password: String) : this(content, password) {
+        this.id = id
     }
 }
