@@ -1,5 +1,6 @@
 package com.dttmm.bbakmemo.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,12 @@ class MemoAdapter : RecyclerView.Adapter<MemoAdapter.ViewHolder>() {
     inner class ViewHolder(val binding: ListMemoItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bindInfo(memo: MemoDto) {
+            if (!memo.password.isEmpty()) {    // 비밀번호 설정이 되어 있는 경우
+                memo.content = "비밀메모입니다"
+                itemView.setBackgroundColor(Color.GRAY)
+            } else {
+                itemView.setBackgroundColor(Color.WHITE)
+            }
             binding.memo = memo
         }
     }
