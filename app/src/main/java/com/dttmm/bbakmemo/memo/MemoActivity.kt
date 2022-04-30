@@ -14,6 +14,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dttmm.bbakmemo.R
@@ -62,16 +63,22 @@ class MemoActivity : AppCompatActivity() {
         binding.recyclerview.also {
             it.adapter = adapter
             it.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+            it.addItemDecoration(
+                DividerItemDecoration(
+                    this@MemoActivity,
+                    DividerItemDecoration.VERTICAL
+                )
+            );
         }
 
         adapter.setOnItemClickListener = object : MemoAdapter.SetOnItemClickListener {
             override fun onClick(view: View, position: Int) {
-                val data = adapter.data[position]
+                val data = adapter.searchData[position]
 
                 if (!data.password.isEmpty()) {  // 비밀메모인 경우
                     val builder = AlertDialog.Builder(this@MemoActivity)
-                    builder.setTitle("비밀번호를 입력하세요")
-                    builder.setIcon(R.drawable.ic_baseline_lock_24)
+                    builder.setTitle("\uD83D\uDD25빡알림\uD83D\uDD25")
+                    builder.setMessage("비밀번호를 입력하세요")
 
                     val view = layoutInflater.inflate(R.layout.dialog_password, null)
                     builder.setView(view)

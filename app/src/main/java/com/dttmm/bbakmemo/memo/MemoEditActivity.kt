@@ -1,9 +1,11 @@
 package com.dttmm.bbakmemo.memo
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import com.dttmm.bbakmemo.R
 import com.dttmm.bbakmemo.databinding.ActivityMemoEditBinding
@@ -56,6 +58,7 @@ class MemoEditActivity : AppCompatActivity() {
                 CoroutineScope(Dispatchers.IO).launch {
                     MemoRepository.getInstance().update(binding.memo as MemoDto)
                 }
+                Toast.makeText(this, "메모가 수정되었습니다", Toast.LENGTH_SHORT).show()
             } else {
                 CoroutineScope(Dispatchers.IO).launch {
                     MemoRepository.getInstance().insert(
@@ -65,16 +68,33 @@ class MemoEditActivity : AppCompatActivity() {
                         )
                     )
                 }
+                Toast.makeText(this, "메모가 추가되었습니다", Toast.LENGTH_SHORT).show()
             }
             finish()
         }
     }
 
     private fun deleteMemo() {
-        CoroutineScope(Dispatchers.IO).launch {
-            MemoRepository.getInstance().delete(binding.memo as MemoDto)
+
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("\uD83D\uDD25빡경고\uD83D\uDD25")
+        builder.setMessage("정말 삭제하시겠습니까?")
+
+        // 버튼 클릭시에 무슨 작업을 할 것인가!
+        val listener = DialogInterface.OnClickListener { dialog, which ->
+            when (which) {
+                DialogInterface.BUTTON_POSITIVE -> {
+                    CoroutineScope(Dispatchers.IO).launch {
+                        MemoRepository.getInstance().delete(binding.memo as MemoDto)
+                    }
+                    Toast.makeText(this, "메모가 삭제되었습니다", Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+            }
         }
-        finish()
+        builder.setPositiveButton("삭제", listener)
+        builder.setNegativeButton("취소", null)
+        builder.show()
     }
 
     private fun check(): Boolean {
