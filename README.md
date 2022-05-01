@@ -96,6 +96,7 @@
 ### Built With
 
 * [Android Studio](https://developer.android.com/)
+* [Kotlin](https://kotlinlang.org/)
 * [Room](https://developer.android.com/training/data-storage/room?)
 * [ViewModel](https://developer.android.com/reference/android/arch/lifecycle/ViewModel)
 * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
