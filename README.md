@@ -7,7 +7,7 @@
   <p align="center">
     🎉제 1회 빡코딩콘 이벤트 출품작
     <br />
-    <a href="https://spangle-wedelia-2dc.notion.site/1-90fa4be2b51a4dad8a37df72bfc466d4" target="_blank"><strong>제 1회 빡코딩콘 참가자 모음 »</strong></a>
+    <a href="https://spangle-wedelia-2dc.notion.site/1-90fa4be2b51a4dad8a37df72bfc466d4"><strong>제 1회 빡코딩콘 참가자 모음 »</strong></a>
     <br />
     <br />
   </p>
@@ -40,7 +40,7 @@
 <br />
 
 ## About The Project
-개발 유튜버 <a href="https://www.youtube.com/c/%EA%B0%9C%EB%B0%9C%ED%95%98%EB%8A%94%EC%A0%95%EB%8C%80%EB%A6%AC" target="_blank"><strong>개발하는 정대리</strong></a> 채널에서 열린 제 1회 빡코딩콘 이벤트에 참가하여 개발하게 되었습니다
+개발 유버 ['개발하는 정대리'](https://www.youtube.com/c/%EA%B0%9C%EB%B0%9C%ED%95%98%EB%8A%94%EC%A0%95%EB%8C%80%EB%A6%AC) 채널에서 열린 제 1회 빡코딩콘 이벤트에 참가하여 개발하게 되었습니다
 
 </br>
 
@@ -95,12 +95,12 @@
 
 ### Built With
 
-* <a href="https://developer.android.com/" target="_blank">Android Studio</a>
-* <a href="https://developer.android.com/training/data-storage/room?" target="_blank">Room</a>
-* <a href="https://developer.android.com/reference/android/arch/lifecycle/ViewModel" target="_blank">ViewModel</a>
-* <a href="https://developer.android.com/topic/libraries/architecture/livedata" target="_blank">LiveData</a>
-* <a href="https://developer.android.com/topic/libraries/data-binding" target="_blank">DataBinding</a>
-* <a href="https://developer.android.com/kotlin/coroutines?" target="_blank">Couroutine</a>
+* [Android Studio](https://developer.android.com/)
+* [Room](https://developer.android.com/training/data-storage/room?)
+* [ViewModel](https://developer.android.com/reference/android/arch/lifecycle/ViewModel)
+* [LiveData](https://developer.android.com/topic/libraries/architecture/livedata)
+* [DataBinding](https://developer.android.com/topic/libraries/data-binding)
+* [Couroutine](https://developer.android.com/kotlin/coroutines?)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
