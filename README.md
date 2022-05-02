@@ -108,11 +108,28 @@
 ## Usage
 
 ### 메모 목록 화면
+메모 목록이 보이는 화면입니다
+
+![목록1](https://user-images.githubusercontent.com/63830874/166262649-ee856c29-435e-42e0-ac03-b4207a95f204.gif)
 
 ### 메모 편집 화면
+메모를 추가, 수정, 삭제를 할 수 있습니다
+
+![추가](https://user-images.githubusercontent.com/63830874/166263025-8cbc0594-331d-4d03-bc7a-1a02a8b52993.gif)
+![수정](https://user-images.githubusercontent.com/63830874/166263029-7047376c-30f8-4ece-931a-6d1a5e1b6941.gif)
+![삭제](https://user-images.githubusercontent.com/63830874/166263031-3e35fdc8-4892-4bc8-919b-f430775c536f.gif)
 
 ### 메모 검색 기능
+메모를 검색할 수 있습니다
+
+RecyclerView Adapter에 Filterable 인터페이스를 구현하였습니다
+
+![검색](https://user-images.githubusercontent.com/63830874/166263033-b7c4228c-acc6-4056-aae4-3fa9a520897f.gif)
 
 ### 비밀 메모 설정 기능
+
+비밀번호를 설정하여 메모 내용을 숨길 수 있습니다
+
+![비밀메모](https://user-images.githubusercontent.com/63830874/166263035-52294cac-3efa-4c76-aaa2-8a0af570851c.gif)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
