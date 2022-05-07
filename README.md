@@ -40,7 +40,7 @@
 <br />
 
 ## About The Project
-개발 유버 ['개발하는 정대리'](https://www.youtube.com/c/%EA%B0%9C%EB%B0%9C%ED%95%98%EB%8A%94%EC%A0%95%EB%8C%80%EB%A6%AC) 채널에서 열린 제 1회 빡코딩콘 이벤트에 참가하여 개발하게 되었습니다
+개발 유튜버 ['개발하는 정대리'](https://www.youtube.com/c/%EA%B0%9C%EB%B0%9C%ED%95%98%EB%8A%94%EC%A0%95%EB%8C%80%EB%A6%AC) 채널에서 열린 제 1회 빡코딩콘 이벤트에 참가하여 개발하게 되었습니다
 
 </br>
 
